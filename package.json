@@ -1,7 +1,7 @@
 {
-  "name": "storied-seed",
+  "name": "realtime-service",
   "version": "0.0.0",
-  "description": "Just a seed project",
+  "description": "realtime-scoreboard",
   "main": "./dist/app/index.js",
   "scripts": {
     "build": "tsc",
@@ -55,6 +55,7 @@
     "mongoose": "^4.11.3",
     "mysql": "^2.13.0",
     "node-services-common-code": "github:subatomicsystems/node-services-common-code",
+    "nodemon": "^1.11.0",
     "qs": "^6.4.0",
     "raven": "^1.2.1",
     "supertest": "^3.0.0",
