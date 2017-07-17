@@ -21,7 +21,7 @@ app.use(`${config.base}/categories`, categoryRoutes);
 app.use(`${config.base}/questions`, questionRoutes);
 
 
-app.listen(config.port, () => {
+app.listen(process.env.PORT | config.port, () => {
   logger.info(`Example app listening on port ${config.port}!`);
 });
 
