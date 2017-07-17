@@ -1,0 +1,28 @@
+# This file is used by AWS CodeDeploy to deploy the ZIP file from S3 to our fleet.
+
+# Do not change the version number in this file, it is reserved by AWS for further use.
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /opt/YOUR_APP_NAME
+hooks:
+  ApplicationStop:
+    - location: deploy/stop.sh
+      timeout: 180
+      runas: ubuntu
+  BeforeInstall:
+    - location: ./deploy/before-install.sh
+      timeout: 180
+      runas: ubuntu
+  ApplicationStart:
+    - location: ./deploy/start.sh
+      timeout: 180
+      runas: ubuntu
+permissions: 
+  - object: /opt/
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+    mode: 775

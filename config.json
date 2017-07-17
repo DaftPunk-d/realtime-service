@@ -1,0 +1,16 @@
+{
+  "port": 9999,
+  "production": {
+  },
+  "stage": {
+    "base": "/stage"
+  },
+  "development": {
+    "mysql":{
+      "host": "localhost",
+      "user": "root",
+      "password": "root",
+      "database": "scoreboard"
+    }
+  }
+}

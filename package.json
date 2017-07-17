@@ -1,0 +1,63 @@
+{
+  "name": "storied-seed",
+  "version": "0.0.0",
+  "description": "Just a seed project",
+  "main": "./dist/app/index.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "tsc && node ./dist/app/index.js",
+    "watch": "nodemon -e ts --exec \"npm run serve\"",
+    "start": "nodemon -e ts --exec \"npm run serve\"",
+    "lint": "tslint ./**/**.ts",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "coverage": "istanbul cover --report html node_modules/mocha/bin/_mocha -- --reporter spec --check-leaks ./dist/test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "seed",
+    "storied"
+  ],
+  "author": "Jens Vanderhaeghe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subatomicsystems/storied-analytics-service/issues"
+  },
+  "homepage": "https://github.com/subatomicsystems/storied-analytics-service#readme",
+  "devDependencies": {
+    "@types/bunyan": "0.0.36",
+    "nodemon": "^1.11.0",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "@types/async": "^2.0.38",
+    "@types/chai": "^3.4.35",
+    "@types/express": "^4.0.34",
+    "@types/lodash": "^4.14.46",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^6.0.51",
+    "@types/qs": "^6.2.30",
+    "@types/supertest": "^2.0.0",
+    "async": "^2.1.5",
+    "bunyan": "^1.8.8",
+    "bunyan-aws": "^0.1.0",
+    "chai": "^3.5.0",
+    "express": "^4.15.3",
+    "git-last-commit": "^0.2.0",
+    "http": "0.0.0",
+    "istanbul": "^0.4.5",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
+    "moment": "^2.17.1",
+    "mongoose": "^4.11.3",
+    "mysql": "^2.13.0",
+    "node-services-common-code": "github:subatomicsystems/node-services-common-code",
+    "qs": "^6.4.0",
+    "raven": "^1.2.1",
+    "supertest": "^3.0.0",
+    "tableify": "^1.0.0"
+  }
+}
