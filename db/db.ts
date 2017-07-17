@@ -157,6 +157,23 @@ export function getAllQuestions(): Promise<any[]> {
   });
 }
 
+export function getAllAnswers(): Promise<any[]> {
+  return new Promise((resolve, reject) => {
+    const qry = `SELECT id, questionId, answer, isCorrect FROM scoreboard.answers;`;
+    poolScoreboard.query(qry, (err: any, results?: any[]) => {
+      if (err) {
+        reject(err);
+      } else {
+        if (results.length > 0) {
+          resolve(results);
+        } else {
+          reject(`Could not get answers from the database`);
+        }
+      }
+    });
+  });
+}
+
 export function getQuestionsByCategoryId(categoryId: number): Promise<any[]> {
   return new Promise((resolve, reject) => {
     const qry = `SELECT id, question FROM scoreboard.questions WHERE categoryId=?;`;
@@ -170,6 +187,25 @@ export function getQuestionsByCategoryId(categoryId: number): Promise<any[]> {
           resolve(null);
         } else {
           reject(`Could not get questions from the database`);
+        }
+      }
+    });
+  });
+}
+
+export function getAnswersByQuestionId(questionId: number): Promise<any[]> {
+  return new Promise((resolve, reject) => {
+    const qry = `SELECT id, answer, isCorrect FROM scoreboard.answers WHERE questionId=?;`;
+    poolScoreboard.query(qry, questionId, (err: any, results?: any[]) => {
+      if (err) {
+        reject(err);
+      } else {
+        if (results.length > 0) {
+          resolve(results);
+        } else if (!results.length){
+          resolve(null);
+        } else {
+          reject(`Could not get answers from the database`);
         }
       }
     });

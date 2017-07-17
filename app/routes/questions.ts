@@ -13,8 +13,8 @@ let router = express.Router();
 router.get('/', async(req: express.Request, res: express.Response) => {
   logger.info('getting questions...');
   let questions: any;
-  let categoryId = req.query.categoryId;
-  if(_.isNumber(parseInt(categoryId))){
+  let categoryId = parseInt(req.query.categoryId);
+  if(_.isNumber(categoryId)){
     questions = await db.getQuestionsByCategoryId(categoryId)
   }else{
     questions = await db.getAllQuestions();
@@ -43,15 +43,18 @@ router.post('/', async (req: express.Request, res: express.Response) => {
 
 router.delete('/:id', async (req: express.Request, res: express.Response) => {
 
-  const categoryId = req.params.id;
-  let qry = 'DELETE FROM `categories` WHERE id=?';
+  const questionId = req.params.id;
+  let qry = 'DELETE FROM `questions` WHERE ?';
 
+  let row = {
+    id: questionId,
+  };
 
-  poolScoreboard.query(qry, categoryId, (err: any, rows: any[]) => {
+  poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
     if(!err) {
       res.json({response: 'success'});
     }else{
-      res.json({response: 'failed to delete category'});
+      res.json({response: 'failed to delete question'});
     }
   });
 });

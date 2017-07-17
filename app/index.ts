@@ -2,6 +2,7 @@ import * as express from 'express';
 import {Application, Request, Response, NextFunction} from 'express';
 import categoryRoutes from './routes/categories';
 import questionRoutes from './routes/questions';
+import answerRoutes from './routes/answers';
 import * as moment from 'moment';
 import * as common from 'node-services-common-code';
 import * as os from 'os';
@@ -11,7 +12,8 @@ const app: Application = express();
 const tableify = require('tableify');
 
 app.use(common.cors);
-app.get(config.base || '/', (req: Request, res: Response) => {
+
+app.get('/', (req: Request, res: Response) => {
   logger.info('HTTP request to root.');
   res.sendStatus(200);
 });
@@ -19,9 +21,10 @@ app.get(config.base || '/', (req: Request, res: Response) => {
 
 app.use(`${config.base}/categories`, categoryRoutes);
 app.use(`${config.base}/questions`, questionRoutes);
+app.use(`${config.base}/answers`, answerRoutes);
 
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT | config.port, () => {
   logger.info(`Example app listening on port ${config.port}!`);
 });
 
