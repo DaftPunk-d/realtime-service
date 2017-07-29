@@ -29,6 +29,8 @@ CREATE TABLE `answers` (
   `questionId` int(11) NOT NULL,
   `answer` varchar(255) NOT NULL,
   `isCorrect` tinyint(4) NOT NULL,
+  FOREIGN KEY (questionId) REFERENCES questions(id)
+    ON DELETE CASCADE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8$$
 
