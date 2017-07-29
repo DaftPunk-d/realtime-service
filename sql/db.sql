@@ -17,6 +17,8 @@ CREATE TABLE `questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `question` varchar(255) NOT NULL,
   `categoryId` int(11) NOT NULL,
+  FOREIGN KEY (categoryId) REFERENCES categories(id)
+    ON DELETE CASCADE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8$$
 
