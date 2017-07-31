@@ -3,6 +3,7 @@ import {Application, Request, Response, NextFunction} from 'express';
 import categoryRoutes from './routes/categories';
 import questionRoutes from './routes/questions';
 import answerRoutes from './routes/answers';
+import registerRoutes from './routes/register';
 import * as moment from 'moment';
 import * as common from 'node-services-common-code';
 import * as os from 'os';
@@ -22,6 +23,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use(`${config.base}/categories`, categoryRoutes);
 app.use(`${config.base}/questions`, questionRoutes);
 app.use(`${config.base}/answers`, answerRoutes);
+app.use(`${config.base}/register`, registerRoutes);
 
 
 app.listen(process.env.PORT | config.port, () => {

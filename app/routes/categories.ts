@@ -25,7 +25,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
       name: category.cat
     };
 
-    poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
+    poolScoreboard.query(qry, row, (err: any) => {
       if(!err) {
         res.json({response: 'success'});
       }else{
