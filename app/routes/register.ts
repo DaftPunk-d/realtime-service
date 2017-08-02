@@ -18,8 +18,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
   let row = {
     username: user.username,
     email: user.email,
-    password: user.password,
-    role: user.role
+    password: user.password
   };
 
   poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
