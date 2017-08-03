@@ -10,6 +10,7 @@ import * as common from '../utils/common';
 
 let router = express.Router();
 
+
 router.post('/', async (req: express.Request, res: express.Response) => {
 
   const user = await common.receiveBody(req);
