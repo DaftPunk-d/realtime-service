@@ -42,6 +42,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(25) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'user',
+  `created` DATETIME NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8$$
 
