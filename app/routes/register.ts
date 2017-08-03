@@ -14,11 +14,12 @@ router.post('/', async (req: express.Request, res: express.Response) => {
 
   const user = await common.receiveBody(req);
   let qry = 'INSERT INTO `users` SET ?';
-
+  let today = new Date();
   let row = {
     username: user.username,
     email: user.email,
-    password: user.password
+    password: user.password,
+    created: today
   };
 
   poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
