@@ -20,7 +20,7 @@
     "seed",
     "storied"
   ],
-  "author": "Mathias Claeys",
+  "author": "Mathias Claeys & Maxim Vanneste",
   "license": "ISC",
   "bugs": {
     "url": ""
@@ -61,7 +61,6 @@
     "bunyan": "^1.8.10",
     "bunyan-aws": "^0.1.0",
     "chai": "^3.5.0",
-    "csv-express": "^1.2.1",
     "email-validator": "^1.0.7",
     "express": "^4.14.0",
     "git-last-commit": "^0.2.0",
