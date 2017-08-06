@@ -1,0 +1,1 @@
+{"version":3,"file":"helloworld.js","sourceRoot":"","sources":["../../test/helloworld.ts"],"names":[],"mappings":";AAAA,qCAAqC;AAErC,wCAAiC;AAIjC,QAAQ,CAAC,OAAO,EAAE;IAChB,EAAE,CAAC,2BAA2B,EAAE,CAAC,IAAqB;QACpD,OAAO,CAAC,WAAG,CAAC;aACT,GAAG,CAAC,GAAG,CAAC;aACR,MAAM,CAAC,GAAG,CAAC;aACX,GAAG,CAAC,IAAI,CAAC,CAAC;IACf,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC"}
