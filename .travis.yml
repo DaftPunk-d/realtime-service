@@ -1,0 +1,33 @@
+language: node_js
+
+# set this variable to false to force Travis to build our app inside of a docker container!
+sudo: false
+
+node_js:
+  - "6.9.0"
+
+# node_modules can be cached in between builds
+cache:
+  directories:
+    - node_modules
+
+# whitelist of branches that will trigger a build
+branches:
+  only:
+    - master
+
+
+# Build the application
+install:
+  - npm set progress=false
+  - npm install --no-optional
+  - npm install typescript -g
+  - tsc
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "e1fc3f1c-c5bb-4285-bfa4-aa1b7ec2cd32"
+  app: quizmaster-service
+  on:
+        branch: master
