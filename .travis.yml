@@ -1,0 +1,7 @@
+language: node_js
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "e1fc3f1c-c5bb-4285-bfa4-aa1b7ec2cd32"
+  app: quizmaster-service
