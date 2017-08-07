@@ -4,6 +4,7 @@ const categories_1 = require("./routes/categories");
 const questions_1 = require("./routes/questions");
 const answers_1 = require("./routes/answers");
 const register_1 = require("./routes/register");
+const auth_1 = require("./routes/auth");
 const common = require("node-services-common-code");
 const config = common.envConfig;
 const logger = common.logger;
@@ -19,6 +20,7 @@ app.use(`${config.base}/categories`, categories_1.default);
 app.use(`${config.base}/questions`, questions_1.default);
 app.use(`${config.base}/answers`, answers_1.default);
 app.use(`${config.base}/register`, register_1.default);
+app.use(`${config.base}/auth`, auth_1.default);
 app.listen(process.env.PORT | config.port, () => {
     logger.info(`Example app listening on port ${config.port}!`);
 });

@@ -4,6 +4,7 @@ import categoryRoutes from './routes/categories';
 import questionRoutes from './routes/questions';
 import answerRoutes from './routes/answers';
 import registerRoutes from './routes/register';
+import authRoutes from './routes/auth';
 import * as moment from 'moment';
 import * as common from 'node-services-common-code';
 import * as os from 'os';
@@ -24,6 +25,7 @@ app.use(`${config.base}/categories`, categoryRoutes);
 app.use(`${config.base}/questions`, questionRoutes);
 app.use(`${config.base}/answers`, answerRoutes);
 app.use(`${config.base}/register`, registerRoutes);
+app.use(`${config.base}/auth`, authRoutes);
 
 
 app.listen(process.env.PORT | config.port, () => {
