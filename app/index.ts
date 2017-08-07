@@ -5,13 +5,10 @@ import questionRoutes from './routes/questions';
 import answerRoutes from './routes/answers';
 import registerRoutes from './routes/register';
 import authRoutes from './routes/auth';
-import * as moment from 'moment';
 import * as common from 'node-services-common-code';
-import * as os from 'os';
 const config = common.envConfig;
 const logger = common.logger;
 const app: Application = express();
-const tableify = require('tableify');
 
 app.use(common.cors);
 
