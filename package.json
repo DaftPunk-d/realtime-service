@@ -71,6 +71,7 @@
     "mv": "^2.1.1",
     "mysql": "^2.13.0",
     "node-services-common-code": "github:subatomicsystems/node-services-common-code",
+    "nodemon": "^1.11.0",
     "objstream": "^1.0.1",
     "password-hash": "^1.2.2",
     "qs": "^6.4.0",
