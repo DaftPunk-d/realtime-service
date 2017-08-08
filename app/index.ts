@@ -24,8 +24,8 @@ app.use(`${config.base}/answers`, answerRoutes);
 app.use(`${config.base}/register`, registerRoutes);
 app.use(`${config.base}/auth`, authRoutes);
 
-
-app.listen(process.env.PORT | config.port, () => {
+// app.listen(process.env.PORT | config.port, () => {
+app.listen(process.env.PORT, () => {
   logger.info(`Example app listening on port ${config.port}!`);
 });
 
