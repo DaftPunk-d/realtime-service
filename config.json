@@ -1,6 +1,12 @@
 {
   "port": 9999,
   "production": {
+    "mysql":{
+      "host": "sql11.freemysqlhosting.net",
+      "user": "sql11189192",
+      "password": "5ue81ySKtR",
+      "database": "sql11189192"
+    }
   },
   "stage": {
     "base": "/stage"
