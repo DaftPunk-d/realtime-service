@@ -3,6 +3,9 @@ language: node_js
 # set this variable to false to force Travis to build our app inside of a docker container!
 sudo: false
 
+node_js:
+  - "6.7.0"
+
 # node_modules can be cached in between builds
 cache:
   directories:
