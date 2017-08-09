@@ -5,6 +5,7 @@ import questionRoutes from './routes/questions';
 import answerRoutes from './routes/answers';
 import registerRoutes from './routes/register';
 import authRoutes from './routes/auth';
+import storeRoutes from './routes/store';
 import * as common from 'node-services-common-code';
 const config = common.envConfig;
 const logger = common.logger;
@@ -23,6 +24,7 @@ app.use(`${config.base}/questions`, questionRoutes);
 app.use(`${config.base}/answers`, answerRoutes);
 app.use(`${config.base}/register`, registerRoutes);
 app.use(`${config.base}/auth`, authRoutes);
+app.use(`${config.base}/store`, storeRoutes);
 
 app.listen(process.env.PORT | config.port, () => {
 // app.listen(process.env.PORT, () => {

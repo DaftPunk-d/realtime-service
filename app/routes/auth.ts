@@ -19,7 +19,7 @@ router.post('/', async(req: express.Request, res: express.Response) => {
   const key = body.e;
   const email = atob(atob(key).split('??')[0]);
   const pass = atob(atob(key).split('??')[1]);
-  let qry = 'SELECT email, password, role FROM `users` WHERE ?';
+  let qry = 'SELECT username, email, password, role FROM `users` WHERE ?';
   let row = {
     email: email,
   };
@@ -39,7 +39,9 @@ router.post('/', async(req: express.Request, res: express.Response) => {
           const roleKey = btoa(atob(key) + '//admin');
           res.json({response: roleKey});
         } else {
-          res.json({response: 'user not authenticated'})
+          const roleKey = btoa(atob(key) + '//' + rows[0].username);
+          res.json({response: roleKey});
+          // res.json({response: 'user not authenticated'})
         }
       } else {
         res.json({response: 'email and password do not match!'})
