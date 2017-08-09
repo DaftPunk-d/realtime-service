@@ -37,22 +37,4 @@ router.post('/', async (req: express.Request, res: express.Response) => {
   });
 });
 
-router.delete('/:id', async (req: express.Request, res: express.Response) => {
-
-  const questionId = req.params.id;
-  let qry = 'DELETE FROM `questions` WHERE ?';
-
-  let row = {
-    id: questionId,
-  };
-
-  poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
-    if(!err) {
-      res.json({response: 'success'});
-    }else{
-      res.json({response: 'failed to delete question'});
-    }
-  });
-});
-
 export default router;
