@@ -16,8 +16,6 @@ router.get('/', async(req: express.Request, res: express.Response) => {
   let categoryId = parseInt(req.query.categoryId);
   if(_.isNumber(categoryId)){
     questions = await db.getQuestionsByCategoryId(categoryId)
-  }else{
-    questions = await db.getAllQuestions();
   }
   res.json(questions);
 });
