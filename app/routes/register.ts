@@ -27,7 +27,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
   poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
     if(!err) {
       res.json({response: 'success'});
-      // redirect to login
+      // this.router.navigate(["/login"]); --> doet niets
     }else if(err.errno === 1062){
       res.json({response: 'email already used!'});
       // verwittig de gebruiker
