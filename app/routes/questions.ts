@@ -22,6 +22,13 @@ router.get('/', async(req: express.Request, res: express.Response) => {
   res.json(questions);
 });
 
+router.get('/all', async(req: express.Request, res: express.Response) => {
+  logger.info('getting questions...');
+  let questions: any;
+  questions = await db.getAllQuestions();
+  res.json(questions);
+});
+
 router.post('/', async (req: express.Request, res: express.Response) => {
 
     const question = await common.receiveBody(req);
