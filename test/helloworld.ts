@@ -12,3 +12,17 @@ describe('store', () => {
       .end(done);
   });
 });
+
+it('should make a new quiz', (done: CallbackHandler) => {
+  request(app)
+    .post('/categories')
+    .set('content-type', 'application/x-www-form-urlencoded')
+    .send({
+      cat: 'biologie'
+    })
+    .expect(200)
+    .expect((res: Response) => {
+      expect(res.body.response).to.equal('success');
+    })
+    .end(done);
+});
