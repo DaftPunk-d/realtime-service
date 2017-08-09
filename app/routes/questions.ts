@@ -14,16 +14,11 @@ router.get('/', async(req: express.Request, res: express.Response) => {
   logger.info('getting questions...');
   let questions: any;
   let categoryId = parseInt(req.query.categoryId);
-  if(_.isNumber(categoryId)){
+  if (categoryId) {
     questions = await db.getQuestionsByCategoryId(categoryId)
+  } else {
+    questions = await db.getAllQuestions();
   }
-  res.json(questions);
-});
-
-router.get('/all', async(req: express.Request, res: express.Response) => {
-  logger.info('getting questions...');
-  let questions: any;
-  questions = await db.getAllQuestions();
   res.json(questions);
 });
 

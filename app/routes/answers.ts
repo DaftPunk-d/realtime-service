@@ -14,7 +14,7 @@ router.get('/', async(req: express.Request, res: express.Response) => {
   logger.info('getting anwsers...');
   let answers: any;
   let questionId = parseInt(req.query.questionId);
-  if(_.isNumber(questionId)){
+  if(questionId){
     answers = await db.getAnswersByQuestionId(questionId)
   }else{
     answers = await db.getAllAnswers();
