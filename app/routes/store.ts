@@ -11,27 +11,54 @@ import * as hash from '../utils/hashp';
 
 let router = express.Router();
 
+router.get('/', async(req: express.Request, res: express.Response) => {
+  logger.info('getting questions...');
+  let scores: any;
+  scores = await db.getScores();
+  res.json(scores);
+});
+
 router.put('/', async(req: express.Request, res: express.Response) => {
 
   const body = await common.receiveBody(req);
   const score = body.s;
   const user = body.u;
-  let qry = 'INSERT INTO `scores` SET ?';
-  let row = {
-    score: score,
+  let qry_get = 'SELECT score FROM scoreboard.scores WHERE ?';
+  let qry = 'UPDATE `scores` SET ? WHERE ?';
+  let get_row = {
     user: user
   };
 
-  poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
+  let user_row = {
+    user: user
+  };
+
+  poolScoreboard.query(qry_get, get_row, (err: any, rows: any[]) => {
     if(err){
-      res.json({response: 'cannot add score!'})
+      res.json({response: 'cannot get score!'})
     }
     if (!err) {
+      let topscore = parseInt(score) + rows[0].score;
+      let row_score = {
+        score: topscore
+      };
+      poolScoreboard.query(qry, [row_score, user_row], (err: any, rows: any[]) => {
+        if(err){
+          res.json({response: 'cannot add score!'})
+        }
+        if (!err) {
+          res.json({response: topscore})
+        } else {
+          res.json({response: 'failed to add score'});
+        }
+      });
       res.json({response: 'success'})
     } else {
       res.json({response: 'failed to add score'});
     }
   });
+
+
 });
 
 router.get('/:user', async(req: express.Request, res: express.Response) => {

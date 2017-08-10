@@ -16,6 +16,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
 
   const user = await common.receiveBody(req);
   let qry = 'INSERT INTO `users` SET ?';
+  let scores_qry = 'INSERT INTO `scores` SET ?';
   let today = new Date();
   let row = {
     username: user.username,
@@ -24,8 +25,20 @@ router.post('/', async (req: express.Request, res: express.Response) => {
     created: today
   };
 
+  let score_row = {
+    score: 0,
+    user: user.username
+  };
+
   poolScoreboard.query(qry, row, (err: any, rows: any[]) => {
     if(!err) {
+      poolScoreboard.query(scores_qry, score_row, (err: any, rows: any[]) => {
+        if(!err) {
+          res.json({response: 'success'});
+        }else{
+          res.json({response: 'failed to add score'});
+        }
+      });
       this.router.navigate(["/login"]);
       res.json({response: 'success'});
     }else if(err.errno === 1062){
