@@ -36,7 +36,7 @@ router.post('/', async(req: express.Request, res: express.Response) => {
       if (verified) {
         //als user geverifierd is: doe iets
         if (rows[0].role === 'admin') {
-          const roleKey = btoa(atob(key) + '//admin');
+          const roleKey = btoa(atob(key) + '//' + rows[0].username);
           res.json({response: roleKey});
         } else {
           const roleKey = btoa(atob(key) + '//' + rows[0].username);
