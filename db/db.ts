@@ -141,6 +141,25 @@ export function getQuestionsByCategoryId(categoryId: number): Promise<any[]> {
   });
 }
 
+export function getScores(): Promise<any[]> {
+  return new Promise((resolve, reject) => {
+    const qry = `SELECT user, score FROM scoreboard.scores;`;
+    poolScoreboard.query(qry, (err: any, results?: any[]) => {
+      if (err) {
+        reject(err);
+      } else {
+        if (results.length > 0) {
+          resolve(results);
+        } else if (!results.length) {
+          resolve(null);
+        } else {
+          reject(`Could not get scores from the database`);
+        }
+      }
+    });
+  });
+}
+
 export function getAnswersByQuestionId(questionId: number): Promise<any[]> {
   return new Promise((resolve, reject) => {
     const qry = `SELECT id, answer, isCorrect FROM scoreboard.answers WHERE questionId=?;`;
