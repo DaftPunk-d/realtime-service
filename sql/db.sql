@@ -45,8 +45,9 @@ CREATE TABLE `users` (
   `role` varchar(255) NOT NULL DEFAULT 'user',
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8$$
 
 CREATE TABLE `scores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
