@@ -7,12 +7,12 @@ import registerRoutes from './routes/register';
 import authRoutes from './routes/auth';
 import storeRoutes from './routes/store';
 import * as common from 'node-services-common-code';
+import Socket = NodeJS.Socket;
 const config = common.envConfig;
 const logger = common.logger;
 const app: Application = express();
 
 app.use(common.cors);
-
 
 app.get('/', (req: Request, res: Response) => {
   logger.info('HTTP request to root.');
@@ -30,6 +30,17 @@ app.use(`${config.base}/store`, storeRoutes);
 app.listen(process.env.PORT | config.port, () => {
 // app.listen(process.env.PORT, () => {
   logger.info(`Example app listening on port ${config.port}!`);
+});
+var io = require('socket.io')(80);
+io.on('connection', function(socket: Socket){
+  console.log('user connected');
+  socket.on('chat message', function(msg: any){
+    console.log(msg)
+    io.emit('chat message', msg);
+  });
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
 });
 
 // Gracefully handle the server being killed by external processes like NodeMon so that the port is also closed.
