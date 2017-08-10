@@ -13,6 +13,7 @@ const app: Application = express();
 
 app.use(common.cors);
 
+
 app.get('/', (req: Request, res: Response) => {
   logger.info('HTTP request to root.');
   res.sendStatus(200);
